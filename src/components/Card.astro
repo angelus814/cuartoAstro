@@ -1,0 +1,40 @@
+---
+const {img, enlace, nombre, autor} = Astro.props
+---
+
+<style>
+    a{
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+      
+        box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+        transition: all .2s ease-in-out;
+        &:hover{
+            box-shadow: 0 4px 14px 0 hsla(0, 0%, 0%, 0.2);
+        }
+        &:hover .parrafo{
+            color: red;
+        }
+        
+    }
+    .parrafo{
+        transition:all .2s ease-in-out;
+    }
+    p{
+        padding: 5px 10px;
+        color: black;
+    }
+    img{
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+    }
+</style>
+<a href={enlace}>
+    <article>
+        <img src={img} alt="loco">
+        <p class="parrafo"><strong>{nombre}</strong></p>
+        <p>{autor}</p>
+    </article>
+</a>

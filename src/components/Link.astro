@@ -1,0 +1,13 @@
+---
+const {enlace} = Astro.props
+---
+<style>
+    a{
+        text-decoration: none;
+        padding: 10px;
+    }
+</style>
+
+<a href={enlace}>
+    <slot />
+</a>

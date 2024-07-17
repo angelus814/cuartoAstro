@@ -1,16 +1,31 @@
 ---
-
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import {MUSIC} from "@/informacion/info"
+import Card from "@/components/Card.astro"
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Viendo</h1>
-	</body>
-</html>
+<style>
+    .section-img{
+        width: 90%;
+        max-width: 1500px;
+        margin-top: 50px;
+        margin-inline: auto;
+        gap: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 300px));
+        justify-content: center;
+    }
+    h2{
+        text-align: center;
+    }
+</style>
+<BaseLayout title="pagina principal">
+    <section>
+        <h2>Nuestras musicas</h2>
+        <div class="section-img">
+            {MUSIC.map(img => 
+                <Card enlace={`services/${img.name}`} nombre={img.name} autor={img.author} img={img.picture}/>
+            )}
+        </div> 
+    </section>
+     
+</BaseLayout>

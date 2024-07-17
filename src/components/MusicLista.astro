@@ -1,0 +1,30 @@
+---
+const {numero, cancion, minutos} = Astro.props
+---
+
+<style>
+    .audio{
+        padding: 10px 20px;
+        border-top: 1px solid black;
+        max-width: 1100px;
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .audio:last-child{
+        border-bottom: 1px solid black;
+    }
+    .audio_left{
+        display: flex;
+        gap: 20px;
+    }
+</style>
+<article class="audio">
+    <div class="audio_left">
+        <p>{numero}</p>
+        <p>{cancion}</p>
+    </div>
+    <div class="audio_right">
+        <p>{minutos}</p>
+    </div>
+</article>
