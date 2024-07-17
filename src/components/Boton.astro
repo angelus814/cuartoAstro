@@ -1,8 +1,11 @@
 ---
-const {img, contenido, filtro} = Astro.props
+const {img, contenido, filtro, id, disabled} = Astro.props
 ---
 <style define:vars={{filtro}}>
-    .button{
+    .start{
+        background-color:rgba(0, 0, 0, .4)
+    }
+    button{
         display: flex;
         width: 120px;
         padding: 8px;
@@ -15,12 +18,8 @@ const {img, contenido, filtro} = Astro.props
         cursor: pointer;
         transition: all .2s ease-in-out;
         border: 2px solid transparent;
-        &:hover{
-            background-color: rgba(0, 0, 0, .1);
-            border: 2px solid lightgray;
-        }
     }
-    .button img{
+    button img{
         filter: var(--filtro)
     }
     p{
@@ -28,7 +27,24 @@ const {img, contenido, filtro} = Astro.props
         font-weight: bolder;
     }
 </style>
-<button class="button">
+<button  id={id} disabled={disabled}>
     <img src={img} alt="xd">
     <p>{contenido}</p>
 </button>
+<script>
+    const play = document.getElementById("play")
+    let music = new Audio("/music/bugambilia.mp3")
+    play.addEventListener("click", ()=>{
+        if(play.classList.toggle("start")){
+            music.play() 
+        }
+        else{    
+            music.pause()
+        }
+    })
+  
+    
+    
+
+    
+</script>

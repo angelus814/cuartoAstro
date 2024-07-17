@@ -116,8 +116,8 @@ const {info} = Astro.props
                 <h2>{info.name}</h2>
                 <p>{info.author}</p>
                 <div class="botonRight">
-                    <Boton img={ImagenPlay.src} contenido="Play"/>
-                    <Boton img={ImagenShuffle.src} contenido="Shuffle" filtro="brightness(0) saturate(100%) invert(66%) sepia(60%) saturate(435%) hue-rotate(120deg) brightness(84%) contrast(95%)"/>
+                    <Boton img={ImagenPlay.src} contenido="Play" id="play"/>
+                    <Boton img={ImagenShuffle.src} contenido="Shuffle" filtro="brightness(0) saturate(100%) invert(66%) sepia(60%) saturate(435%) hue-rotate(120deg) brightness(84%) contrast(95%)" id="stop" disabled/>
                 </div>
             </div>
         </div>
@@ -127,6 +127,10 @@ const {info} = Astro.props
             {info.music.map((valor, indice)=>
                 <MusicLista numero={indice + 1} cancion = {valor.name} minutos = "3:42"/>
             )}
+            <p>{}</p>
         </div>
     </section>
+    <script>
+
+    </script>
 </BaseLayout>

@@ -1,7 +1,7 @@
 export const MUSIC = [
     {
         id: 0, name: "HotFuss", author: "The killers",  picture:"https://cdn.pixabay.com/photo/2023/10/18/15/30/statue-8324499_1280.jpg", music:[
-            {id: 0, name: "Jenrry Was a Friend of Mine"},
+            {id: 0, name: "Jenrry Was a Friend of Mine", src : "/music/bugambilia.mp3"},
             {id: 1, name: "Jenrry Was a Friend of Mine"},
             {id: 2, name: "Jenrry Was a Friend of Mine"},    
             {id: 3, name: "Jenrry Was a Friend of Mine"},
