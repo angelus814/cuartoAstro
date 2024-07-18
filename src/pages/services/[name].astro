@@ -139,30 +139,59 @@ const infoJSON = JSON.stringify(info);
         const seccion = document.querySelector(".contenedorMusic")
         const informacion = JSON.parse(seccion.dataset.info);
         let id = informacion.id
+        const cantidad = informacion.music.length
         let audio = null
-        play.addEventListener("click", ()=>{
+        
+        const playAudio = (numero) =>{
             playBar.setAttribute("disabled", "true")
             if(!audio){
                 audio = new Audio(informacion.music[id].src)
             }
             if(play.classList.toggle("cambiarEstado")){
-                return audio.play()
+               audio.play()
             }
             else{
                 playBar.removeAttribute("disabled")
                 audio.pause()
             }
-        })
-        next.addEventListener("click", ()=>{
+            audio.addEventListener('timeupdate', () => {
+                    if(audio.ended){
+                        id += 1
+                        if(id === cantidad){
+                            play.classList.toggle("cambiarEstado")
+                            return
+                        }
+                        audio = new Audio(informacion.music[id].src)
+                        play.classList.remove("cambiarEstado")
+                        return playAudio(id)
+                    }
+            });
+        }
+        const nextAudio = (numero) =>{
             id += 1
+            if(id === cantidad){
+                play.classList.toggle("cambiarEstado")
+                return
+            }
+            if(id === cantidad - 1){
+                next.setAttribute("disabled", "true")
+            }
+            if(play.classList.toggle("cambiarEstado") === false){
+                play.classList.toggle("cambiarEstado")
+            }
             if(audio){
                 audio.pause()
                 audio = new Audio(informacion.music[id].src)
                 audio.play()
             }
-            
-            console.log("rey")
-        })
+            audio.addEventListener('timeupdate', () => {
+                    if(audio.ended){
+                        return nextAudio(id)
+                    }
+            });
+        }
+        play.addEventListener("click", playAudio)
+        next.addEventListener("click", nextAudio)
         playBar.addEventListener("click", ()=>{
             if(!audio){
                 audio = new Audio(informacion.music[0].src)   
