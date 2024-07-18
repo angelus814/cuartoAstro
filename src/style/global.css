@@ -8,3 +8,9 @@ body{
 a{
     text-decoration: none;
 }
+.musicOn{
+    display: unset;
+}
+.cambiarEstado{
+    content: url("../img/pause.png");
+}

@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ImagenPlay from "@/img/play.png"
 import ImagenShuffle from "@/img/shunffle.png"
 import Boton from '@/components/Boton.astro';
-import Card from '@/components/Card.astro';
+import ReproductorMusica from '@/components/ReproductorMusica.astro';
 import MusicLista from '@/components/MusicLista.astro';
 import {MUSIC} from "@/informacion/info"
 console.log(MUSIC)
@@ -18,8 +18,8 @@ export async function getStaticPaths(){
 }
 
 const {name} = Astro.params
-const {info} = Astro.props
-
+const {info } = Astro.props
+const infoJSON = JSON.stringify(info);
 ---
 <style>
     
@@ -106,7 +106,7 @@ const {info} = Astro.props
     }
 </style>
 <BaseLayout title="card">
-    <section class="contenedorMusic">
+    <section class="contenedorMusic" data-info={infoJSON}>
         <div class="music">
             <div class="musicLeft">
                 <img src="https://astro-records.pages.dev/vynil-lp.webp" alt="disco" class="imagen2">
@@ -130,7 +130,33 @@ const {info} = Astro.props
             <p>{}</p>
         </div>
     </section>
+    <ReproductorMusica imagen={info.picture} nombre={info.name} author={info.author}/>
     <script>
-
+        const prev = document.getElementById("prev")
+        const playBar = document.getElementById("play")
+        const play = document.getElementById("playBar")
+        const next = document.getElementById("next")
+        const seccion = document.querySelector(".contenedorMusic")
+        const informacion = JSON.parse(seccion.dataset.info);
+        let id = informacion.id
+        let audio = null
+        play.addEventListener("click", ()=>{
+            playBar.setAttribute("disabled", "true")
+            if(!audio){
+                audio = new Audio(informacion.music[id].src)
+            }
+            if(play.classList.toggle("cambiarEstado")){
+                return audio.play()
+            }
+            else{
+                playBar.removeAttribute("disabled")
+                audio.pause()
+            }
+        })
+        next.addEventListener("click", ()=>{
+            id += 1
+            console.log(id)
+        })
+        
     </script>
 </BaseLayout>

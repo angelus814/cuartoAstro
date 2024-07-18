@@ -1,5 +1,7 @@
 ---
+
 const {img, contenido, filtro, id, disabled} = Astro.props
+
 ---
 <style define:vars={{filtro}}>
     .start{
@@ -31,6 +33,7 @@ const {img, contenido, filtro, id, disabled} = Astro.props
     <img src={img} alt="xd">
     <p>{contenido}</p>
 </button>
+
 <script>
     const play = document.getElementById("play")
     let music = new Audio("/music/bugambilia.mp3")
@@ -42,9 +45,4 @@ const {img, contenido, filtro, id, disabled} = Astro.props
             music.pause()
         }
     })
-  
-    
-    
-
-    
 </script>

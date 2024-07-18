@@ -1,0 +1,85 @@
+---
+import play from "@/img/playNegro.png"
+import nextPrev from "@/img/next.png"
+const {imagen, nombre, author} = Astro.props
+---
+
+<style>
+    .containerReproductorMusica{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        color:white;
+        padding: 20px 0;
+        background-color:#20C1B1;
+    }
+    .reproductorMusica{
+        max-width: 1100px;
+        margin-inline: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    .reproductorLeft{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        
+    }
+    .reproductorInfo p:first-child{
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+    .reproductorInfo p:last-child{
+        font-size: 1.1em;
+    }
+    .reproductorImagen{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+    }
+    .reproductorImagen img{
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+    }
+    .reproductorRight{
+        display: flex;
+        gap: 5px;
+    }
+    button{
+        background: none;
+        cursor: pointer;
+        border: none;
+    }
+    button:first-child img{
+        transform: rotate(180deg);
+    }
+</style>
+
+<article class="containerReproductorMusica">
+    <div class="reproductorMusica">
+        <div class="reproductorLeft">
+            <div class="reproductorImagen">
+                <img src={imagen} alt="aa">
+            </div>
+            <div class="reproductorInfo">
+                <p>{nombre}</p>
+                <p>{author}</p>
+            </div>
+        </div>
+        <div class="reproductorRight">
+            <button id="prev">
+                <img src={nextPrev.src} alt="">
+            </button>
+            <button >
+                <img src={play.src} alt="" id="playBar">
+            </button>
+            <button id="next">
+                <img src={nextPrev.src} alt="">
+            </button>
+        </div>
+    </div>
+</article>
