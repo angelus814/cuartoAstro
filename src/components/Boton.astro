@@ -29,20 +29,7 @@ const {img, contenido, filtro, id, disabled} = Astro.props
         font-weight: bolder;
     }
 </style>
-<button  id={id} disabled={disabled}>
+<button id={id} disabled={disabled}>
     <img src={img} alt="xd">
     <p>{contenido}</p>
 </button>
-
-<script>
-    const play = document.getElementById("play")
-    let music = new Audio("/music/bugambilia.mp3")
-    play.addEventListener("click", ()=>{
-        if(play.classList.toggle("start")){
-            music.play() 
-        }
-        else{    
-            music.pause()
-        }
-    })
-</script>

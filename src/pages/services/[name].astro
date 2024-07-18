@@ -155,8 +155,26 @@ const infoJSON = JSON.stringify(info);
         })
         next.addEventListener("click", ()=>{
             id += 1
-            console.log(id)
+            if(audio){
+                audio.pause()
+                audio = new Audio(informacion.music[id].src)
+                audio.play()
+            }
+            
+            console.log("rey")
         })
-        
+        playBar.addEventListener("click", ()=>{
+            if(!audio){
+                audio = new Audio(informacion.music[0].src)   
+            }
+            if(playBar.classList.toggle("start")){
+                audio.play() 
+                play.classList.add("cambiarEstado")
+            }
+            else{    
+                audio.pause()
+                play.classList.remove("cambiarEstado")
+            }
+        })
     </script>
 </BaseLayout>
